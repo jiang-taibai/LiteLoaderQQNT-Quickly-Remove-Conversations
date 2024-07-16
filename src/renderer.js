@@ -1,4 +1,4 @@
-import {handleMiddleMouseButtonDown} from "./lib/middle-mouse-handler.js";
+import {handleWheelDown} from "./lib/wheel-down-handler.js";
 import {initSetting} from "./lib/setting/setting.js";
 
 const {plugin} = LiteLoader.plugins.QuicklyRemoveConversations.path
@@ -8,7 +8,7 @@ const {plugin} = LiteLoader.plugins.QuicklyRemoveConversations.path
  */
 const addMiddleMouseButtonDownEventListenerInterval = setInterval(() => {
     if (location.hash.includes('#/main')) {
-        document.body.addEventListener('mousedown', handleMiddleMouseButtonDown, true);
+        document.body.addEventListener('mousedown', handleWheelDown, true);
         clearInterval(addMiddleMouseButtonDownEventListenerInterval);
     }
 }, 100);
