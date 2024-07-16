@@ -32,20 +32,20 @@ class SettingOfVersionSection {
 
     initOpenGithubPageBtn() {
         this.openGithubPageBtn.addEventListener('click', () => {
-            openWeb('https://github.com/jiang-taibai/LiteLoader-Quickly-Remove-Conversations')
+            openWeb('https://github.com/jiang-taibai/LiteLoaderQQNT-Quickly-Remove-Conversations')
         })
     }
 
     initOpenDownloadPageBtn() {
         this.openDownloadPageBtn.addEventListener('click', () => {
-            openWeb('https://github.com/jiang-taibai/LiteLoader-Quickly-Remove-Conversations/releases/latest')
+            openWeb('https://github.com/jiang-taibai/LiteLoaderQQNT-Quickly-Remove-Conversations/releases/latest')
         })
     }
 
     handleCheckUpdateBtnClick() {
         this.checkUpdateText.textContent = `当前版本${manifest.version}，正在检查更新中……`
         this.checkUpdateBtn.textContent = '检查更新中'
-        fetch('https://api.github.com/repos/jiang-taibai/LiteLoader-Quickly-Remove-Conversations/releases/latest')
+        fetch('https://api.github.com/repos/jiang-taibai/LiteLoaderQQNT-Quickly-Remove-Conversations/releases/latest')
             .then(res => res.json())
             .then(data => {
                 let latestVersion = data.tag_name

@@ -24,12 +24,12 @@
 
 ### 2.2 下载本插件
 
-打开 [Releases](https://github.com/jiang-taibai/LiteLoader-Quickly-Remove-Conversations/releases/latest)
-下载最新版本的插件 `LiteLoader-Quickly-Remove-Conversations.zip`
+打开 [Releases](https://github.com/jiang-taibai/LiteLoaderQQNT-Quickly-Remove-Conversations/releases/latest)
+下载最新版本的插件 `LiteLoaderQQNT-Quickly-Remove-Conversations.zip`
 
 ### 2.3 安装本插件
 
-将 `LiteLoader-Quickly-Remove-Conversations.zip` 解压到 LiteLoaderQQNT/plugins 文件夹内。
+将 `LiteLoaderQQNT-Quickly-Remove-Conversations.zip` 解压到 LiteLoaderQQNT/plugins 文件夹内。
 
 你也可以参考 [插件 | LiteLoaderQQNT](https://liteloaderqqnt.github.io/guide/plugins.html)，根据官方指引安装插件。
 

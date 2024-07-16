@@ -25,11 +25,11 @@
     "preload": "./src/preload.js"
   },
   "repository": {
-    "repo": "jiang-taibai/LiteLoader-Quickly-Remove-Conversations",
+    "repo": "jiang-taibai/LiteLoaderQQNT-Quickly-Remove-Conversations",
     "branch": "main",
     "release": {
-      "tag": "1.0.0",
-      "file": "LiteLoader-Quickly-Remove-Conversations.zip"
+      "tag": "1.0.1",
+      "file": "LiteLoaderQQNT-Quickly-Remove-Conversations.zip"
     }
   }
 }
