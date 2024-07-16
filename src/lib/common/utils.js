@@ -1,6 +1,6 @@
-import {ipcMain, shell, dialog, BrowserWindow} from "electron";
+const {openExternal} = LiteLoader.api
 
 
 export const openWeb = (url) => {
-    shell.openExternal(url);
+    openExternal(url);
 }

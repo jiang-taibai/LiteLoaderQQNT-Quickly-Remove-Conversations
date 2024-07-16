@@ -1,17 +1,18 @@
-import {openWeb} from "../common/utils";
+import {openWeb} from "../common/utils.js";
 
 const {manifest} = LiteLoader.plugins.QuicklyRemoveConversations
 
-export const initSettingPanel = () => {
-    const settingPanelOfVersionSection = new SettingPanelOfVersionSection()
-    settingPanelOfVersionSection.init()
+export const initSetting = (view) => {
+    const settingOfVersionSection = new SettingOfVersionSection(view)
+    settingOfVersionSection.init()
 }
 
-class SettingPanelOfVersionSection {
-    constructor() {
-        this.settingPanelVersionSection = document.querySelector('#quickly-remove-conversations-config-panel-version')
+class SettingOfVersionSection {
+    constructor(view) {
+        this.settingPanelVersionSection = view.querySelector('#quickly-remove-conversations-config-panel-version')
         this.checkUpdateText = this.settingPanelVersionSection.querySelector('.check-update-text')
         this.checkUpdateBtn = this.settingPanelVersionSection.querySelector('.check-update-btn')
+        this.updateSettingPanel = this.settingPanelVersionSection.querySelector('.update-setting-panel')
         this.updateTitle = this.settingPanelVersionSection.querySelector('.update-title')
         this.updateDesc = this.settingPanelVersionSection.querySelector('.update-desc')
         this.openGithubPageBtn = this.settingPanelVersionSection.querySelector('.open-github-page-btn')
@@ -25,8 +26,8 @@ class SettingPanelOfVersionSection {
     }
 
     initCheckUpdateBtn() {
+        this.checkUpdateBtn.addEventListener('click', () => this.handleCheckUpdateBtnClick())
         this.handleCheckUpdateBtnClick()
-        this.checkUpdateBtn.addEventListener('click', this.handleCheckUpdateBtnClick)
     }
 
     initOpenGithubPageBtn() {
@@ -43,38 +44,28 @@ class SettingPanelOfVersionSection {
 
     handleCheckUpdateBtnClick() {
         this.checkUpdateText.textContent = `当前版本${manifest.version}，正在检查更新中……`
-        SettingPanelUtils.disableBtn(this.checkUpdateBtn)
         this.checkUpdateBtn.textContent = '检查更新中'
         fetch('https://api.github.com/repos/jiang-taibai/LiteLoader-Quickly-Remove-Conversations/releases/latest')
             .then(res => res.json())
             .then(data => {
-                const latestVersion = data.tag_name
-
+                let latestVersion = data.tag_name
+                if (latestVersion.startsWith('v')) {
+                    latestVersion = latestVersion.substring(1)
+                }
                 if (latestVersion === manifest.version) {
-                    this.checkUpdateText.textContent = `当前版本${manifest.version}，已是最新版本`
+                    this.checkUpdateText.textContent = `当前版本 ${manifest.version}，已是最新版本`
+                    this.updateSettingPanel.style.display = 'none'
                 } else {
-                    this.checkUpdateText.textContent = `当前版本${manifest.version}，最新版本${latestVersion}`
-                    this.updateTitle.textContent = `${data.name} 更新说明`
+                    this.checkUpdateText.textContent = `当前版本 ${manifest.version}，最新版本 ${latestVersion}`
+                    this.updateSettingPanel.style.display = 'block'
+                    this.updateTitle.textContent = `${latestVersion} 更新说明`
                     this.updateDesc.textContent = data.body
                 }
-
-                SettingPanelUtils.enableBtn(this.checkUpdateBtn)
                 this.checkUpdateBtn.textContent = '检查更新'
             })
             .catch(err => {
-                this.checkUpdateText.textContent = `当前版本${manifest.version}，检查更新失败：${err}`
-                SettingPanelUtils.enableBtn(this.checkUpdateBtn)
+                this.checkUpdateText.textContent = `当前版本 ${manifest.version}，检查更新失败：${err}`
                 this.checkUpdateBtn.textContent = '检查更新'
             })
-    }
-}
-
-class SettingPanelUtils {
-    static disableBtn(btn) {
-        btn.setAttribute('is-disabled', true)
-    }
-
-    static enableBtn(btn) {
-        btn.removeAttribute('is-disabled')
     }
 }

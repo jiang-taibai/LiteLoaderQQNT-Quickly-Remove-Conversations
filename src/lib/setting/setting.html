@@ -1,21 +1,25 @@
 <setting-section data-title="版本" id="quickly-remove-conversations-config-panel-version">
     <setting-panel>
-        <setting-item data-direction="row">
-            <setting-text class="check-update-text">目前已是最新版本: v1.0.0</setting-text>
-            <setting-button data-type="secondary" class="check-update-btn">重新发现</setting-button>
-        </setting-item>
+        <setting-list data-direction="column">
+            <setting-item data-direction="row">
+                <setting-text class="check-update-text">目前已是最新版本: v1.0.0</setting-text>
+                <setting-button data-type="primary" class="btn check-update-btn">重新发现</setting-button>
+            </setting-item>
+        </setting-list>
     </setting-panel>
-    <setting-panel>
+    <setting-panel class="update-setting-panel">
         <setting-list data-direction="column">
             <setting-item>
                 <setting-text class="update-title">v1.0.0 更新说明</setting-text>
             </setting-item>
             <setting-item>
-                <setting-text class="update-desc"></setting-text>
+                <p class="update-desc"></p>
             </setting-item>
-            <setting-item data-direction="row">
-                <setting-button class="open-github-page-btn">GitHub</setting-button>
-                <setting-button class="open-download-page-btn">前往下载页面</setting-button>
+            <setting-item>
+                <div class="btn-group">
+                    <setting-button data-type="primary" class="btn open-github-page-btn">GitHub</setting-button>
+                    <setting-button data-type="primary" class="btn open-download-page-btn">前往下载页面</setting-button>
+                </div>
             </setting-item>
         </setting-list>
     </setting-panel>

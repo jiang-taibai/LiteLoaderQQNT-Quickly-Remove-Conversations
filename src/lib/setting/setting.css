@@ -1,0 +1,14 @@
+#quickly-remove-conversations-config-panel-version .btn {
+    cursor: pointer !important;
+}
+
+#quickly-remove-conversations-config-panel-version .btn-group {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+#quickly-remove-conversations-config-panel-version .update-desc {
+    white-space: pre-wrap;
+    line-height: 1em;
+}

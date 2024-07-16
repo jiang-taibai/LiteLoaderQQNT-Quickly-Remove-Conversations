@@ -1,5 +1,5 @@
-import {handleMiddleMouseButtonDown} from "./lib/middle-mouse-handler";
-import {initSettingPanel} from "./lib/setting/setting";
+import {handleMiddleMouseButtonDown} from "./lib/middle-mouse-handler.js";
+import {initSetting} from "./lib/setting/setting.js";
 
 const {plugin} = LiteLoader.plugins.QuicklyRemoveConversations.path
 
@@ -23,5 +23,5 @@ export const onSettingWindowCreated = async (view) => {
     const htmlText = await (await fetch(htmlFilePath)).text()
     view.insertAdjacentHTML('afterbegin', htmlText)
     document.head.insertAdjacentHTML('beforeend', `<link rel="stylesheet" href="${cssFilePath}" />`)
-    initSettingPanel()
+    initSetting(view)
 }
