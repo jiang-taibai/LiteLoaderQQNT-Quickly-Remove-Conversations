@@ -5,7 +5,7 @@
   "name": "快速移除会话",
   "slug": "QuicklyRemoveConversations",
   "description": "使用滚轮点击快速移除会话，就像在其他软件里的操作一样",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icon": "./favicon.svg",
   "thumb": "./favicon.svg",
   "authors": [
