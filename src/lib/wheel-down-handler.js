@@ -11,7 +11,7 @@ function removeConversation(conversationElement) {
         button: 2
     });
     conversationElement.dispatchEvent(rightClickEvent);
-    getQContextMenuItemByTextContent("从消息列表中移除", 50, 1)
+    getQContextMenuItemByTextContent("从消息列表中移除", 100, 1)
         .then(menuItemElement => {
             if (menuItemElement) {
                 menuItemElement.click();
@@ -29,7 +29,7 @@ function removeConversation(conversationElement) {
  * @param interval      尝试间隔时间
  * @returns {Promise<Element|null>}
  */
-async function getQContextMenuItemByTextContent(text, maxAttempts = 50, interval = 1) {
+async function getQContextMenuItemByTextContent(text, maxAttempts, interval) {
     let attempts = 0;
     while (attempts < maxAttempts) {
         const menuItems = document.querySelectorAll('.q-context-menu-item');
@@ -49,7 +49,7 @@ async function getQContextMenuItemByTextContent(text, maxAttempts = 50, interval
  * 处理鼠标中键点击事件
  * @param event 鼠标事件对象
  */
-function handleMiddleMouseButtonDown(event) {
+function handleWheelDown(event) {
     let target = event.target.closest('.recent-contact-item');
     if (target && event.button === 1) {
         // 阻止默认行为和事件冒泡，防止点开聊天框
@@ -64,5 +64,5 @@ function handleMiddleMouseButtonDown(event) {
 }
 
 export {
-    handleMiddleMouseButtonDown
+    handleWheelDown
 }
