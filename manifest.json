@@ -1,0 +1,35 @@
+{
+  "$schema": "./manifest_schema.json",
+  "manifest_version": 4,
+  "type": "extension",
+  "name": "快速移除聊天框",
+  "slug": "QuicklyRemoveConversations",
+  "description": "利用鼠标中键快速移除聊天框",
+  "version": "1.0.0",
+  "icon": null,
+  "thumb": null,
+  "authors": [
+    {
+      "name": "jiang-taibai",
+      "link": "https://github.com/jiang-taibai"
+    }
+  ],
+  "platform": [
+    "win32",
+    "linux",
+    "darwin"
+  ],
+  "injects": {
+    "renderer": "./src/renderer.js",
+    "main": "./src/main.js",
+    "preload": "./src/preload.js"
+  },
+  "repository": {
+    "repo": "jiang-taibai/LiteLoader-Quickly-Remove-Conversations",
+    "branch": "main",
+    "release": {
+      "tag": "1.0.0",
+      "file": "LiteLoader-Quickly-Remove-Conversations.zip"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+module.exports.onBrowserWindowCreated = window => {
+
+}
