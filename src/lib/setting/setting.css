@@ -2,6 +2,10 @@
     cursor: pointer !important;
 }
 
+#quickly-remove-conversations-config-panel-version .update-setting-panel {
+    display: none;
+}
+
 #quickly-remove-conversations-config-panel-version .btn-group {
     display: flex;
     flex-direction: row;
