@@ -13,25 +13,29 @@
 
 ## 1. 特点
 
-TODO
+- 一键删除：使用鼠标中键点击会话即可快速删除，相比右键移动再点击删除更加方便。
+- 用户心智模型：使用鼠标中键点击删除符合用户心智模型，不需要额外学习。
 
 ## 2. 安装
 
 ### 2.1 安装 LiteloaderQQNT 插件
 
-TODO
+访问 [安装 | LiteLoaderQQNT](https://liteloaderqqnt.github.io/guide/install.html)，根据官方指引安装。
 
 ### 2.2 下载 QRC 插件
 
-TODO
+打开 [Releases](https://github.com/jiang-taibai/LiteLoader-Quickly-Remove-Conversations/releases/latest)
+下载最新版本的 QRC 插件 `LiteLoader-Quickly-Remove-Conversations.zip`
 
 ### 2.3 安装 QRC 插件
 
-TODO
+将 `LiteLoader-Quickly-Remove-Conversations.zip` 解压到 LiteLoaderQQNT/plugins 文件夹内。
+
+你也可以参考 [插件 | LiteLoaderQQNT](https://liteloaderqqnt.github.io/guide/plugins.html)，根据官方指引安装插件。
 
 ## 3. 使用
 
-TODO
+安装完成后，重启 QQNT，接下来使用鼠标中键点击会话即可实现快速删除。
 
 ## 4. 开源协议
 
