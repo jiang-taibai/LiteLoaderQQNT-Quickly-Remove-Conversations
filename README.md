@@ -37,7 +37,19 @@
 
 安装完成后，重启 QQNT，接下来使用滚轮点击会话即可实现快速删除。
 
-## 4. 开源协议
+## 4. 反馈
+
+如果你有任何问题或建议，欢迎提交 [Issue](https://github.com/jiang-taibai/LiteLoaderQQNT-Quickly-Remove-Conversations/issues)
+
+## 5. 更新日志
+
+- v1.0.1 - 2024-07-16 23:43:06
+    - 完善：修改仓库名称
+- v1.0.0 - 2024-07-16 17:14:32
+    - 功能：实现鼠标中键快速删除会话功能
+    - 功能：实现检查更新功能
+
+## 6. 开源协议
 
 本项目遵循 [MIT](https://opensource.org/licenses/MIT) 开源协议。
 
