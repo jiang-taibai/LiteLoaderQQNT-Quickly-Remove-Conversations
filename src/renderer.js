@@ -11,7 +11,7 @@ const addMiddleMouseButtonDownEventListenerInterval = setInterval(() => {
         document.body.addEventListener('mousedown', handleMouseDown, true);
         clearInterval(addMiddleMouseButtonDownEventListenerInterval);
     }
-}, 10);
+}, 100);
 
 export const onSettingWindowCreated = async (view) => {
     const htmlFilePath = `local:///${plugin}/src/lib/setting/setting.html`
