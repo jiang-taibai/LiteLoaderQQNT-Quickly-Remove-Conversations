@@ -16,3 +16,8 @@
     white-space: pre-wrap;
     line-height: 1em;
 }
+
+#quickly-remove-conversations-config-panel-setting .shortcut-setting-item {
+    justify-content: flex-start;
+    gap: 8px;
+}

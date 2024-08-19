@@ -1,10 +1,15 @@
-import {openWeb} from "../common/utils.js";
+import {openWeb, setSelectOption} from "../common/utils.js";
+
+const {getConfig, setConfig} = window.QuicklyRemoveConversations
+const {data: dataPath} = LiteLoader.plugins.QuicklyRemoveConversations.path
 
 const {manifest} = LiteLoader.plugins.QuicklyRemoveConversations
 
 export const initSetting = (view) => {
     const settingOfVersionSection = new SettingOfVersionSection(view)
+    const settingOfShortcutSection = new SettingOfShortcutSection(view)
     settingOfVersionSection.init()
+    settingOfShortcutSection.init()
 }
 
 class SettingOfVersionSection {
@@ -67,5 +72,42 @@ class SettingOfVersionSection {
                 this.checkUpdateText.textContent = `当前版本 ${manifest.version}，检查更新失败：${err}`
                 this.checkUpdateBtn.textContent = '检查更新'
             })
+    }
+}
+
+class SettingOfShortcutSection {
+    constructor(view) {
+        this.settingPanelShortcutSection = view.querySelector('#quickly-remove-conversations-config-panel-setting')
+        this.keyboardSelectElement = this.settingPanelShortcutSection.querySelector(".keyboard-select");
+        this.mouseSelectElement = this.settingPanelShortcutSection.querySelector(".mouse-select");
+        this.init().then(r => {
+        })
+    }
+
+    async init() {
+        await this.initKeyboardSelectElement()
+        await this.initMouseSelectElement()
+    }
+
+    async initKeyboardSelectElement() {
+        const config = await getConfig(dataPath)
+        setSelectOption(this.keyboardSelectElement, config.shortcut.keyboard)
+        this.keyboardSelectElement.addEventListener("selected", async (event) => {
+            const {name, value} = event.detail
+            const currentConfig = await getConfig(dataPath)
+            currentConfig.shortcut.keyboard = value
+            await setConfig(dataPath, currentConfig)
+        })
+    }
+
+    async initMouseSelectElement() {
+        const config = await getConfig(dataPath)
+        setSelectOption(this.mouseSelectElement, config.shortcut.mouse)
+        this.mouseSelectElement.addEventListener("selected", async (event) => {
+            const {name, value} = event.detail
+            const currentConfig = await getConfig(dataPath)
+            currentConfig.shortcut.mouse = value
+            await setConfig(dataPath, currentConfig)
+        })
     }
 }

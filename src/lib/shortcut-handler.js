@@ -1,3 +1,6 @@
+const {getConfig} = window.QuicklyRemoveConversations
+const {data: dataPath} = LiteLoader.plugins.QuicklyRemoveConversations.path
+
 /**
  * 移除会话，即模拟右键点击消息列表中的某个消息，然后点击“从消息列表中移除”
  * @param conversationElement
@@ -11,15 +14,17 @@ function removeConversation(conversationElement) {
         button: 2
     });
     conversationElement.dispatchEvent(rightClickEvent);
-    getQContextMenuItemByTextContent("从消息列表中移除", 100, 1)
+    return new Promise((resolve, reject) => {
+        getQContextMenuItemByTextContent("从消息列表中移除", 100, 1)
         .then(menuItemElement => {
             if (menuItemElement) {
                 menuItemElement.click();
-                return true;
+                resolve(true);
             } else {
-                return false;
+                resolve(false);
             }
         })
+    })
 }
 
 /**
@@ -45,13 +50,58 @@ async function getQContextMenuItemByTextContent(text, maxAttempts, interval) {
     return null;
 }
 
+async function matchingEvent(event) {
+    const config = await getConfig(dataPath);
+    const {keyboard, mouse} = config.shortcut
+    return checkMouse(event, mouse) && checkKeyboard(event, keyboard);
+}
+
+/**
+ * 检查鼠标按钮是否与配置匹配
+ * @param {MouseEvent} event - 触发的事件
+ * @param {string} mouseButton - 配置中的鼠标按钮
+ * @returns {boolean} - 是否匹配
+ */
+function checkMouse(event, mouseButton) {
+    switch (mouseButton) {
+        case 'left':
+            return event.button === 0;
+        case 'wheel':
+            return event.button === 1;
+        case 'right':
+            return event.button === 2;
+        default:
+            return false;
+    }
+}
+
+/**
+ * 检查键盘修饰键是否严格与配置匹配
+ * @param {MouseEvent} event - 触发的事件
+ * @param {string} modifier - 配置中的单个键盘修饰键
+ * @returns {boolean} - 是否匹配
+ */
+function checkKeyboard(event, modifier) {
+    if (modifier === 'none') {
+        return true;
+    }
+    const pressed = {
+        'ctrl': event.ctrlKey,
+        'shift': event.shiftKey,
+        'alt': event.altKey
+    };
+    const onlyOnePressed = (key) => pressed[key] && !pressed.ctrl !== (key === 'ctrl') && !pressed.shift !== (key === 'shift') && !pressed.alt !== (key === 'alt');
+    return onlyOnePressed(modifier);
+}
+
 /**
  * 处理鼠标中键点击事件
  * @param event 鼠标事件对象
  */
-function handleWheelDown(event) {
+async function handleMouseDown(event) {
     let target = event.target.closest('.recent-contact-item');
-    if (target && event.button === 1) {
+    if (!target) return
+    if (await matchingEvent(event)) {
         // 阻止默认行为和事件冒泡，防止点开聊天框
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -64,5 +114,5 @@ function handleWheelDown(event) {
 }
 
 export {
-    handleWheelDown
+    handleMouseDown
 }

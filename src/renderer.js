@@ -1,4 +1,4 @@
-import {handleWheelDown} from "./lib/wheel-down-handler.js";
+import {handleMouseDown} from "./lib/shortcut-handler.js";
 import {initSetting} from "./lib/setting/setting.js";
 
 const {plugin} = LiteLoader.plugins.QuicklyRemoveConversations.path
@@ -8,14 +8,10 @@ const {plugin} = LiteLoader.plugins.QuicklyRemoveConversations.path
  */
 const addMiddleMouseButtonDownEventListenerInterval = setInterval(() => {
     if (location.hash.includes('#/main')) {
-        document.body.addEventListener('mousedown', handleWheelDown, true);
+        document.body.addEventListener('mousedown', handleMouseDown, true);
         clearInterval(addMiddleMouseButtonDownEventListenerInterval);
     }
-}, 100);
-
-setTimeout(() => {
-    clearInterval(addMiddleMouseButtonDownEventListenerInterval);
-}, 60 * 1000);
+}, 10);
 
 export const onSettingWindowCreated = async (view) => {
     const htmlFilePath = `local:///${plugin}/src/lib/setting/setting.html`
