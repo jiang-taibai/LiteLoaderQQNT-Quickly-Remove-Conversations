@@ -1,10 +1,9 @@
 const fs = require('fs')
 const path = require('path')
-const {ipcMain, BrowserWindow} = require('electron')
+const {ipcMain} = require('electron')
 
 let configInMemory = void 0
 
-// 响应渲染进程获取插件配置
 ipcMain.handle('QuicklyRemoveConversations.getConfig', (_, dataPath) => {
     if (configInMemory) return configInMemory
     const configPath = path.join(dataPath, 'config.json') // 配置文件路径
@@ -34,7 +33,4 @@ ipcMain.handle('QuicklyRemoveConversations.setConfig', (_, dataPath, config) => 
     fs.writeFileSync(configPath, JSON.stringify(config))
 })
 
-
-module.exports.onBrowserWindowCreated = window => {
-
-}
+module.exports.onBrowserWindowCreated = window => {}

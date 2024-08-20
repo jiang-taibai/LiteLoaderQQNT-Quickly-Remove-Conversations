@@ -1,7 +1,10 @@
 import {handleMouseDown} from "./lib/shortcut-handler.js";
 import {initSetting} from "./lib/setting/setting.js";
+const {getConfig} = window.QuicklyRemoveConversations
+const {data: dataPath, plugin} = LiteLoader.plugins.QuicklyRemoveConversations.path
 
-const {plugin} = LiteLoader.plugins.QuicklyRemoveConversations.path
+// 预加载配置文件到内存
+getConfig(dataPath).then(config => {})
 
 /**
  * 不断尝试添加鼠标中键点击事件监听器

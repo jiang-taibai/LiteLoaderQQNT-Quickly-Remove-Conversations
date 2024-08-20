@@ -98,11 +98,11 @@ function checkKeyboard(event, modifier) {
  * 处理鼠标中键点击事件
  * @param event 鼠标事件对象
  */
-async function handleMouseDown(event) {
+function handleMouseDown(event) {
     let target = event.target.closest('.recent-contact-item');
     if (!target) return
-    if (await matchingEvent(event)) {
-        // 阻止默认行为和事件冒泡，防止点开聊天框
+    matchingEvent(event).then((result) => {
+        if(!result) return
         event.preventDefault();
         event.stopImmediatePropagation();
         removeConversation(target).then((result) => {
@@ -110,7 +110,7 @@ async function handleMouseDown(event) {
                 console.error('移除失败');
             }
         });
-    }
+    })
 }
 
 export {
