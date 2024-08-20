@@ -2,19 +2,20 @@
 
 <div>
   <img src="https://img.shields.io/badge/Build-passing-%2396C40F" alt="Build-passing"/>
-  <img src="https://img.shields.io/badge/Version-1.0.1-%231081C1" alt="Version-1.0.1"/>
+  <img src="https://img.shields.io/badge/Version-1.1.0-%231081C1" alt="Version-1.1.0"/>
   <img src="https://img.shields.io/badge/License-MIT-%2396C40F" alt="License-MIT"/>
   <img src="https://img.shields.io/badge/CopyRight-Jiang_Liu-%2396C40F" alt="CopyRight-Jiang_Liu"/>
 </div>
 
-实现使用滚轮快速删除 QQNT 聊天会话功能，就像在各种软件中关闭标签页一样。
+实现使用滚轮（或自定义快捷键）快速删除 QQNT 聊天会话功能，就像在各种软件中一键关闭标签页一样。
 
 ![安装后](./docs/assets/img/after-installation.webp)
 
 ## 1. 特点
 
-- 一键删除：使用滚轮点击会话即可快速删除，相比右键移动再点击删除更加方便。
+- 一键删除：使用滚轮（或自定义快捷键）点击会话即可快速删除，相比右键移动再点击删除更加方便。
 - 用户心智模型：使用滚轮点击删除符合用户心智模型，不需要额外学习。
+- 自定义快捷键：自定义删除会话的快捷键，方便用户根据自己的使用习惯进行调整。
 
 ## 2. 安装
 
@@ -35,7 +36,7 @@
 
 ## 3. 使用
 
-安装完成后，重启 QQNT，接下来使用滚轮点击会话即可实现快速删除。
+安装完成后，重启 QQNT，接下来使用滚轮（或自定义快捷键）点击会话即可实现快速删除。
 
 ## 4. 反馈
 
@@ -43,6 +44,8 @@
 
 ## 5. 更新日志
 
+- v1.1.0 - 2024-08-21 00:15:08
+    - 功能：增加自定义快捷键功能
 - v1.0.1 - 2024-07-16 23:43:06
     - 完善：修改仓库名称
 - v1.0.0 - 2024-07-16 17:14:32
