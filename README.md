@@ -2,7 +2,7 @@
 
 <div>
   <img src="https://img.shields.io/badge/Build-passing-%2396C40F" alt="Build-passing"/>
-  <img src="https://img.shields.io/badge/Version-1.1.0-%231081C1" alt="Version-1.1.0"/>
+  <img src="https://img.shields.io/badge/Version-1.2.2-%231081C1" alt="Version-1.2.2"/>
   <img src="https://img.shields.io/badge/License-MIT-%2396C40F" alt="License-MIT"/>
   <img src="https://img.shields.io/badge/CopyRight-Jiang_Liu-%2396C40F" alt="CopyRight-Jiang_Liu"/>
 </div>
@@ -43,6 +43,9 @@
 
 ## 5. 更新日志
 
+- v1.2.2 - 2024-11-19 00:33:06
+    - 修复：修复滚轮点击事件仍然触发普通点击事件（打开会话）的问题
+    - 修复：修复打开菜单后，无法使用右键的快捷键删除
 - v1.1.0 - 2024-08-21 00:15:08
     - 功能：增加自定义快捷键功能
 - v1.0.1 - 2024-07-16 23:43:06
