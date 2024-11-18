@@ -7,7 +7,7 @@ const {data: dataPath, plugin} = LiteLoader.plugins.QuicklyRemoveConversations.p
 getConfig(dataPath).then(config => {})
 
 /**
- * 不断尝试添加鼠标中键点击事件监听器
+ * 不断尝试添加鼠标点击事件监听器
  */
 const addMiddleMouseButtonDownEventListenerInterval = setInterval(() => {
     if (location.hash.includes('#/main')) {

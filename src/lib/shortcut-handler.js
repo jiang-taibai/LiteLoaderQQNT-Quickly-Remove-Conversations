@@ -16,14 +16,14 @@ function removeConversation(conversationElement) {
     conversationElement.dispatchEvent(rightClickEvent);
     return new Promise((resolve, reject) => {
         getQContextMenuItemByTextContent("从消息列表中移除", 100, 1)
-        .then(menuItemElement => {
-            if (menuItemElement) {
-                menuItemElement.click();
-                resolve(true);
-            } else {
-                resolve(false);
-            }
-        })
+            .then(menuItemElement => {
+                if (menuItemElement) {
+                    menuItemElement.click();
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            })
     })
 }
 
@@ -95,15 +95,15 @@ function checkKeyboard(event, modifier) {
 }
 
 /**
- * 处理鼠标中键点击事件
+ * 处理鼠标点击事件
  * @param event 鼠标事件对象
  */
 function handleMouseDown(event) {
+    event.preventDefault();
     let target = event.target.closest('.recent-contact-item');
     if (!target) return
     matchingEvent(event).then((result) => {
-        if(!result) return
-        event.preventDefault();
+        if (!result) return;
         event.stopImmediatePropagation();
         removeConversation(target).then((result) => {
             if (!result) {
