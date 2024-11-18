@@ -33,4 +33,9 @@ ipcMain.handle('QuicklyRemoveConversations.setConfig', (_, dataPath, config) => 
     fs.writeFileSync(configPath, JSON.stringify(config))
 })
 
-module.exports.onBrowserWindowCreated = window => {}
+ipcMain.on('QuicklyRemoveConversations.getConfigInMemory', (event) => {
+    event.returnValue = configInMemory;
+});
+
+module.exports.onBrowserWindowCreated = window => {
+}

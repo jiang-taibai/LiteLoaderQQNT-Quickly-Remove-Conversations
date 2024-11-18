@@ -1,4 +1,4 @@
-const {getConfig} = window.QuicklyRemoveConversations
+const {getConfigInMemory} = window.QuicklyRemoveConversations
 const {data: dataPath} = LiteLoader.plugins.QuicklyRemoveConversations.path
 
 /**
@@ -50,8 +50,8 @@ async function getQContextMenuItemByTextContent(text, maxAttempts, interval) {
     return null;
 }
 
-async function matchingEvent(event) {
-    const config = await getConfig(dataPath);
+function matchingEvent(event) {
+    const config = getConfigInMemory(dataPath);
     const {keyboard, mouse} = config.shortcut
     return checkMouse(event, mouse) && checkKeyboard(event, keyboard);
 }
@@ -99,18 +99,17 @@ function checkKeyboard(event, modifier) {
  * @param event 鼠标事件对象
  */
 function handleMouseDown(event) {
-    event.preventDefault();
     let target = event.target.closest('.recent-contact-item');
     if (!target) return
-    matchingEvent(event).then((result) => {
-        if (!result) return;
-        event.stopImmediatePropagation();
-        removeConversation(target).then((result) => {
-            if (!result) {
-                console.error('移除失败');
-            }
-        });
-    })
+    const result = matchingEvent(event)
+    if (!result) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    removeConversation(target).then((result) => {
+        if (!result) {
+            console.error('移除失败');
+        }
+    });
 }
 
 export {
