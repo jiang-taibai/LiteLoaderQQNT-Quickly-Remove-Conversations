@@ -5,7 +5,7 @@
   "name": "快速移除会话",
   "slug": "QuicklyRemoveConversations",
   "description": "使用滚轮（或自定义快捷键）快速删除聊天会话功能，就像在各种软件中一键关闭标签页一样。",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "icon": "./favicon.svg",
   "thumb": "./favicon.svg",
   "authors": [
@@ -28,7 +28,7 @@
     "repo": "jiang-taibai/LiteLoaderQQNT-Quickly-Remove-Conversations",
     "branch": "main",
     "release": {
-      "tag": "1.2.1",
+      "tag": "1.2.2",
       "file": "LiteLoaderQQNT-Quickly-Remove-Conversations.zip"
     }
   }
