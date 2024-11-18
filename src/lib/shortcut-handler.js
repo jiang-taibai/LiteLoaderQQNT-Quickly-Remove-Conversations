@@ -15,10 +15,9 @@ function removeConversation(conversationElement) {
     });
     conversationElement.dispatchEvent(rightClickEvent);
     return new Promise((resolve, reject) => {
-        getQContextMenuItemByTextContent("从消息列表中移除", 100, 1)
+        clickQContextMenuItemByTextContent("从消息列表中移除", 100, 10)
             .then(menuItemElement => {
                 if (menuItemElement) {
-                    menuItemElement.click();
                     resolve(true);
                 } else {
                     resolve(false);
@@ -34,12 +33,13 @@ function removeConversation(conversationElement) {
  * @param interval      尝试间隔时间
  * @returns {Promise<Element|null>}
  */
-async function getQContextMenuItemByTextContent(text, maxAttempts, interval) {
+async function clickQContextMenuItemByTextContent(text, maxAttempts, interval) {
     let attempts = 0;
     while (attempts < maxAttempts) {
         const menuItems = document.querySelectorAll('.q-context-menu-item');
         for (let item of menuItems) {
             if (item.textContent.includes(text)) {
+                item.click();
                 return item;
             }
         }
